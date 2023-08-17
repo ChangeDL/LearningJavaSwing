@@ -1,5 +1,5 @@
 import javax.swing.*;
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -7,22 +7,42 @@ public class Practice {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Java Swing Practice");
         frame.setSize(400, 300);
-        JLabel label = new JLabel("Hello, Swing!");
-        JLabel labelClick = new JLabel("");
-        JButton button = new JButton("Click Me If You Dare");
-        JButton submitTextButton = new JButton("Submit Text");
-        JTextField textField = new JTextField(15);
-        JLabel textFieldHeader = new JLabel("Write Something for me.");
-        JLabel textFieldResult = new JLabel("");
 
-        frame.setLayout(new FlowLayout());
-        frame.add(label);
-        frame.add(button);
-        frame.add(labelClick);
-        frame.add(textFieldHeader);
-        frame.add(textField);
-        frame.add(submitTextButton);
-        frame.add(textFieldResult);
+        JPanel greetingPanel = new JPanel();
+        greetingPanel.setLayout(new BoxLayout(greetingPanel, BoxLayout.Y_AXIS));
+        JLabel label = new JLabel("Hello, Swing!");
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        greetingPanel.add(label);
+
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout(new FlowLayout());
+        JButton button = new JButton("Click Me If You Dare");
+        JLabel labelClick = new JLabel("");
+        topPanel.add(button);
+        topPanel.add(labelClick);
+
+        JPanel middlePanel = new JPanel();
+        middlePanel.setLayout(new FlowLayout());
+        JLabel textFieldHeader = new JLabel("Write Something for me.");
+        JTextField textField = new JTextField(15);
+        JButton submitTextButton = new JButton("Submit Text");
+        middlePanel.add(textFieldHeader);
+        middlePanel.add(textField);
+        middlePanel.add(submitTextButton);
+
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.setLayout(new FlowLayout());
+        JLabel textFieldResult = new JLabel("");
+        bottomPanel.add(textFieldResult);
+
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+        mainPanel.add(greetingPanel);
+        mainPanel.add(topPanel);
+        mainPanel.add(middlePanel);
+        mainPanel.add(bottomPanel);
+
+        frame.add(mainPanel);
 
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -46,5 +66,4 @@ public class Practice {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
-
 }
