@@ -10,11 +10,19 @@ public class Practice {
         JLabel label = new JLabel("Hello, Swing!");
         JLabel labelClick = new JLabel("");
         JButton button = new JButton("Click Me If You Dare");
+        JButton submitTextButton = new JButton("Submit Text");
+        JTextField textField = new JTextField(15);
+        JLabel textFieldHeader = new JLabel("Write Something for me.");
+        JLabel textFieldResult = new JLabel("");
 
         frame.setLayout(new FlowLayout());
         frame.add(label);
         frame.add(button);
         frame.add(labelClick);
+        frame.add(textFieldHeader);
+        frame.add(textField);
+        frame.add(submitTextButton);
+        frame.add(textFieldResult);
 
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -25,6 +33,13 @@ public class Practice {
                 } else {
                     labelClick.setText("");
                 }
+            }
+        });
+
+        submitTextButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String inputText = textField.getText();
+                textFieldResult.setText("You entered: " + inputText);
             }
         });
 
