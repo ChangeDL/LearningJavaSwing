@@ -59,7 +59,10 @@ public class Practice {
         submitTextButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String inputText = textField.getText();
-                textFieldResult.setText("You entered: " + inputText);
+                if (inputText.length() > 0) {
+                    textFieldResult.setText("You entered: " + inputText);
+                } else
+                    textFieldResult.setText("Nothing Entered");
             }
         });
 
